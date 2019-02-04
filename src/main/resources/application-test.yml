@@ -1,0 +1,4 @@
+#spring:
+#  profile: test
+server:
+  name: app-test

@@ -1,0 +1,4 @@
+spring:
+  profile: prod
+server:
+  name: app-prod

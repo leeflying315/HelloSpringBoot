@@ -1,0 +1,4 @@
+spring:
+  profile: dev
+server:
+  name: app-dev
