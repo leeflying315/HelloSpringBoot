@@ -15,19 +15,18 @@ public class HelloController {
     private final LongAdder counter = new LongAdder();
 
     @Autowired
-    ConfigProperties configProperties;
+    private ConfigProperties configProperties;
 
     @RequestMapping("/hello")
-    public String index(@RequestParam(value="name", defaultValue="World")String name){
+    public String index(@RequestParam(value = "name", defaultValue = "World") String name) {
         System.out.println(configProperties.getKafkaServer());
-        if(name.equals("sum")) {
+        if (name.equals("sum")) {
             long result = counter.sumThenReset();
-            System.out.println("sum is "+result);
-        }
-        else
+            System.out.println("sum is " + result);
+        } else
             counter.increment();
 
         System.out.println(counter.toString());
-        return String.format(template,name);
+        return String.format(template, name);
     }
 }
