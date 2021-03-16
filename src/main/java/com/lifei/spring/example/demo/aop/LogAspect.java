@@ -16,7 +16,7 @@ import java.util.Arrays;
 @Log4j2
 public class LogAspect {
 
-    @Pointcut("execution(* com.lifei.spring.example.demo.controler.*.*(..))")
+    @Pointcut("@annotation(org.springframework.web.bind.annotation.RequestMapping)")
     public void webLog(){
        log.info("LogAspect.webLog");
     }

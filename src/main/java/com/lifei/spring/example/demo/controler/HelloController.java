@@ -1,6 +1,8 @@
 package com.lifei.spring.example.demo.controler;
 
+import com.lifei.spring.example.demo.annotation.MyAnnotation;
 import com.lifei.spring.example.demo.conf.ConfigProperties;
+import com.lifei.spring.example.demo.service.TestPrivateService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,9 @@ public class HelloController {
     @Autowired
     private ConfigProperties configProperties;
 
+    @Autowired
+    private TestPrivateService testPrivateService;
+
     @RequestMapping("/hello")
     public String index(@RequestParam(value = "name", defaultValue = "World") String name) {
         System.out.println(configProperties.getKafkaServer());
@@ -34,7 +39,24 @@ public class HelloController {
 
     @RequestMapping("/first")
     public String first(){
+        test();
+        myAnnotation(null);
         return "first controller";
+    }
+    @RequestMapping("/second")
+    private String second(){
+        myAnnotation(null);
+//        test();
+        return "second controller";
+    }
+    private void test(){
+        testPrivateService.test();
+    }
+
+    @MyAnnotation
+    public void myAnnotation(String name){
+        log.info("name {}",name);
+
     }
     @RequestMapping("/doError")
     public Object error() {
