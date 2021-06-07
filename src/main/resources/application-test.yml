@@ -2,4 +2,4 @@
 #  profile: test
 server:
   name: app-test
-  port: 8090
+  port: 8093

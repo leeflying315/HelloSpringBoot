@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Random;
 import java.util.concurrent.atomic.LongAdder;
 
 @RestController
@@ -23,6 +24,8 @@ public class HelloController {
 
     @Autowired
     private TestPrivateService testPrivateService;
+
+    Random r = new Random(1);
 
     @RequestMapping("/hello")
     public String index(@RequestParam(value = "name", defaultValue = "World") String name) {

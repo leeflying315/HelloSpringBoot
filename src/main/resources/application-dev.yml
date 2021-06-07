@@ -2,4 +2,4 @@ spring:
   profile: dev
 server:
   name: app-dev
-  port: 8090
+  port: 8093
