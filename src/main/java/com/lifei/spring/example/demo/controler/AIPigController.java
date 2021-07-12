@@ -20,7 +20,7 @@ public class AIPigController {
 
 
     @PostMapping("/openapi/cv/pig/v1/detect")
-    public PigDetectResp detectPig(@RequestParam(value = "imagefile")MultipartFile imagefile, @RequestParam(value = "region") String region){
+    public PigDetectResp detectPig(@RequestParam(value = "imagefile")MultipartFile imagefile, @RequestParam(value = "region") List<Object> region){
         log.info("input region {} , name {}",region, imagefile.getOriginalFilename());
 
         PigDetectResp.ResultImage resultImage = new PigDetectResp.ResultImage();
@@ -35,12 +35,12 @@ public class AIPigController {
     }
 
     @PostMapping("/openapi/cv/pig/v1/weight")
-    public PigDetectResp weightPig(@RequestParam(value = "imagefile")MultipartFile imagefile, @RequestParam(value = "region") String region){
-        log.info("input region {} , name {}",region, imagefile.getOriginalFilename());
+    public PigDetectResp weightPig(@RequestParam(value = "imagefile")MultipartFile imagefile){
+        log.info("input , name {}", imagefile.getOriginalFilename());
 
         PigDetectResp.ResultImage resultImage = new PigDetectResp.ResultImage();
         resultImage.setImage("http://172.30.125.90:8088/static/img/icon-66.87131739.svg");
-        resultImage.setCount(r.nextInt());
+        resultImage.setWeight(r.nextInt());
         return PigDetectResp.builder()
                 .code(0)
                 .msg("ok")

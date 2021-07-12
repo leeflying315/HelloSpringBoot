@@ -30,5 +30,7 @@ public class PigDetectResp {
         String image;
 
         Integer count;
+
+        Integer weight;
     }
 }
